@@ -1,6 +1,7 @@
-package com.javarush.test.level28.lesson15.big01.view;
+package org.javarush.bigtask;
 
-import com.javarush.test.level28.lesson15.big01.vo.Vacancy;
+import org.javarush.bigtask.view.HtmlView;
+import org.javarush.bigtask.vo.Vacancy;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -11,14 +12,12 @@ import static org.junit.Assert.*;
 /**
  * Created by Alexey on 26.02.2016.
  */
-public class HtmlViewTest
-{
+public class HtmlViewTest {
 
     @Test
-    public void testUpdate() throws Exception
-    {
+    public void testUpdate() throws Exception {
 
-        List<Vacancy> v = new ArrayList<Vacancy>();
+        List<Vacancy> v = new ArrayList<>();
 //("Senior Java Developer", "", "Одесса", "Luxoft","hh.ua","http://hh.ua/vacancy/16005582?query=java%20Odessa");
 //Vacancy{title='Java Developer', salary='', city='Одесса', companyName='Luxoft', siteName='hh.ua', url='http://hh.ua/vacancy/15873078?query=java%20Odessa'}
 //Vacancy{title='Web developer', salary='', city='Одесса', companyName='Key people recruiting', siteName='hh.ua', url='http://hh.ua/vacancy/15900912?query=java%20Odessa'}
@@ -30,13 +29,9 @@ public class HtmlViewTest
 //Vacancy{title='Automation QA Engineer', salary='', city='Одесса', companyName='Luxoft', siteName='hh.ua', url='http://hh.ua/vacancy/15873323?query=java%20Odessa'}
 //Vacancy{title='Java Developer', salary='', city='Одесса', companyName='PLS Logistics Services', siteName='hh.ua', url='http://hh.ua/vacancy/15910662?query=java%20Odessa'}
         new HtmlView().update(v);
-
-
     }
 
     @Test
-    public void testGetDocument() throws Exception
-    {
-
+    public void testGetDocument() throws Exception {
     }
 }

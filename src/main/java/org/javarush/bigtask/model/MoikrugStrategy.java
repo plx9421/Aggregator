@@ -1,6 +1,6 @@
-package com.javarush.test.level28.lesson15.big01.model;
+package org.javarush.bigtask.model;
 
-import com.javarush.test.level28.lesson15.big01.vo.Vacancy;
+import org.javarush.bigtask.vo.Vacancy;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -13,31 +13,25 @@ import java.util.List;
 /**
  * Created by Alexey on 26.02.2016.
  */
-public class MoikrugStrategy implements Strategy
-{
+public class MoikrugStrategy implements Strategy {
 
-            private static final String URL_FORMAT = "https://moikrug.ru/vacancies?page=%d&q=java+%s";
-//    private static final String URL_FORMAT = "http://javarush.ru/testdata/big28data2.html";
+    private static final String URL_FORMAT = "https://moikrug.ru/vacancies?page=%d&q=java+%s";
+    //    private static final String URL_FORMAT = "http://javarush.ru/testdata/big28data2.html";
     private static final String USER_AGENT = "Mozilla/5.0 (jsoup)";
     private static final String REFER = "http://javarush.ru";
     private static final int TIMEOUT = 100;
 
     @Override
-    public List<Vacancy> getVacancies(String searchString)
-    {
+    public List<Vacancy> getVacancies(String searchString) {
         List<Vacancy> list = new ArrayList<>();
         int page = 1;
-        while (true)
-        {
-            try
-            {
+        while (true) {
+            try {
                 Document document = getDocument(searchString, page);
                 Elements elements = document.getElementsByClass("job");
 
-                if (elements != null && elements.size() > 0)
-                {
-                    for (Element element : elements)
-                    {
+                if (elements != null && elements.size() > 0) {
+                    for (Element element : elements) {
                         Vacancy vacancy = new Vacancy();
 
                         vacancy.setUrl("https://moikrug.ru" + element.getElementsByTag("a").attr("href"));
@@ -60,9 +54,7 @@ public class MoikrugStrategy implements Strategy
                     page++;
 //                    break;
                 } else break;
-            }
-            catch (IOException e)
-            {
+            } catch (IOException e) {
 //                e.printStackTrace();
             }
 
@@ -70,8 +62,7 @@ public class MoikrugStrategy implements Strategy
         return list;
     }
 
-    protected Document getDocument(String searchString, int page) throws IOException
-    {
+    protected Document getDocument(String searchString, int page) throws IOException {
 
         String url = String.format(URL_FORMAT, page, searchString);
 
